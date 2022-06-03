@@ -1,0 +1,23 @@
+.week-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-change-month {
+  cursor: pointer;
+  font-size: 21px;
+  line-height: 34px;
+  width: 34px;
+  text-align: center;
+  border-radius: 50%;
+  color: #007bff;
+}
+
+.current-month {
+  margin: 0 15px;
+  width: 115px;
+  text-align: center;
+  text-transform: capitalize;
+}
+

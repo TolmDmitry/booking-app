@@ -1,0 +1,13 @@
+.day {
+  text-align: center;
+  border-right: 1px solid grey;
+  border-bottom: 2px solid grey;
+  background: white;
+  min-height: 45px;
+  text-align: center;
+  justify-content: center;
+}
+
+
+
+

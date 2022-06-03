@@ -1,0 +1,19 @@
+<div class="container">
+  <app-week-selector
+    [indexWeek]="indexWeek"
+    [currentMonthName]="currentMonthName"
+    (prevMonth)="prevMonth()"
+    (nextMonth)="nextMonth()"
+  >
+  </app-week-selector>
+  <app-week-header
+    (onActiveDay)="onActiveDay($event)"
+    [week]="week"
+  ></app-week-header>
+  <app-day-list
+    [rooms]="rooms"
+    (onRoomOpen)="onRoomOpen($event)"
+    (onOpenDialog)="onOpenDialog($event)"
+    (onDeleteBooking)="onDeleteBooking($event)"
+  ></app-day-list>
+</div>
