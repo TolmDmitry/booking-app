@@ -1,6 +1,5 @@
-<div class="row">
-  <div class="col-sm">Booking Workspace</div>
-  <div
+<div class="row header-calendar">
+  <mat-card
     class="day col-sm my-ripple-container"
     matRipple
     matRippleColor="rgb(176, 234, 157,0.3)"
@@ -8,10 +7,12 @@
     (click)="onActiveDay.emit(day)"
   >
     <div [class.currentDay]="day | isCurrentDayPipe">
-      {{ day | datePipe: "D" }}
+      <div>
+        {{ day | datePipe: "D" }}
+      </div>
+      <div>
+        {{ day | datePipe: "dddd" }}
+      </div>
     </div>
-    <div>
-      {{ day | datePipe: "dddd" }}
-    </div>
-  </div>
+  </mat-card>
 </div>

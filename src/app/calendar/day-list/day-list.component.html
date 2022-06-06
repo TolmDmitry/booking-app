@@ -1,51 +1,41 @@
-<div class="col-sm">
-  <div class="row" *ngFor="let room of rooms">
-    <div class="room day">
-      <button
-        mat-raised-button
-        type="button"
-        class="btn btn-success"
-        (click)="onRoomOpen.emit(room.roomNumber)"
+<mat-tab-group headerPosition="below" color="primary" dynamicHeight>
+  <mat-tab *ngFor="let room of rooms" label="Room {{ room.roomNumber }}">
+    <div class="row room" *ngFor="let place of room.places">
+      <mat-card class="col-sm day">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat atque
+        enim laborum nihil. Unde, perspiciatis debitis iusto rem, accusamus quae
+        recusandae deleniti necessitatibus excepturi commodi quos. Ab ipsam
+        magnam assumenda?
+      </mat-card>
+      <mat-card
+        matRipple
+        class="my-ripple-container"
+        *ngFor="let day of room.bookedPlaces; index as i"
+        class="day col-sm"
+        [ngClass]="day.type"
+        (click)="openDialog(day, room, place)"
       >
-        {{ room.name }}
-      </button>
-    </div>
-    <div *ngIf="room.hide">
-      <div class="row" *ngFor="let place of room.places">
-        <div class="col-sm day">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
-          atque enim laborum nihil. Unde, perspiciatis debitis iusto rem,
-          accusamus quae recusandae deleniti necessitatibus excepturi commodi
-          quos. Ab ipsam magnam assumenda?
-        </div>
-        <div
-          matRipple
-          class="my-ripple-container"
-          *ngFor="let day of room.bookedPlaces; index as i"
-          class="day col-sm"
-          [ngClass]="day.type"
-          (click)="openDialog(day, room, place)"
+        <ol>
+          <li class="contractor-name" *ngFor="let user of day.users">
+            {{ user }}
+            <mat-icon
+              (click)="
+                deleteBooking(day.date, user, room.roomNumber);
+                $event.stopPropagation()
+              "
+              >delete_forever</mat-icon
+            >
+          </li>
+        </ol>
+        <mat-card
+          *ngIf="!room.bookedPlaces[i].usersCountHide"
+          class="row user-counter"
         >
-          <ol>
-            <li class="contractor-name" *ngFor="let user of day.users">
-              {{ user }}
-              <mat-icon
-                (click)="
-                  deleteBooking(day.date, user, room.roomNumber);
-                  $event.stopPropagation()
-                "
-                >delete_forever</mat-icon
-              >
-            </li>
-          </ol>
-          <div
-            *ngIf="!room.bookedPlaces[i].usersCountHide"
-            class="row user-counter"
-          >
-            {{ room.bookedPlaces[i].users.length }}
-          </div>
-        </div>
-      </div>
+          <mat-card-content>
+            Booked : {{ room.bookedPlaces[i].users.length }}
+          </mat-card-content>
+        </mat-card>
+      </mat-card>
     </div>
-  </div>
-</div>
+  </mat-tab>
+</mat-tab-group>

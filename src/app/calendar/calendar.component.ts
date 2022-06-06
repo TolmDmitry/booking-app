@@ -11,15 +11,22 @@ import * as moment from 'moment';
   styleUrls: ['./calendar.component.css'],
 })
 export class CalendarComponent implements OnInit {
-  indexWeek: number = 0;
-
-  currentMonthName: string | undefined = '';
+  indexWeek: number = moment().week();
+  weekInfo = {
+    weekStartDate: '',
+    weekEndDate: '',
+    currentMonthName: '',
+  };
 
   bookedPlaces: BookedPlace[] | undefined = [];
 
   rooms: Room[] = [];
 
-  weeks: Array<{ week: number; days: moment.Moment[]; monthName: string }> = [];
+  weeks: Array<{
+    week: number;
+    days: moment.Moment[];
+    monthName: string;
+  }> = [];
 
   week: Array<moment.Moment> | undefined = [];
 
@@ -69,22 +76,18 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit(): void {
     this.weeks = this.calendarService.getWeekDays();
-    this.indexWeek = this.weeks[0].week;
     this.week = this.calendarService.getWeek(this.indexWeek).days;
-    this.currentMonthName = this.calendarService.getWeek(
-      this.indexWeek
-    ).monthName;
     this.bookingService.setupWeek(this.week);
+    this.getWeekInfo(this.indexWeek);
     this.rooms = this.bookingService.rooms;
   }
 
   public prevMonth() {
-    if (this.indexWeek > this.weeks[0].week) {
+    console.log(this.indexWeek);
+    if (this.indexWeek > moment().week()) {
       --this.indexWeek;
       this.week = this.calendarService.getWeek(this.indexWeek).days;
-      this.currentMonthName = this.calendarService.getWeek(
-        this.indexWeek
-      ).monthName;
+      this.getWeekInfo(this.indexWeek);
       this.bookingService.setupWeek(this.week);
     }
   }
@@ -93,10 +96,22 @@ export class CalendarComponent implements OnInit {
     if (this.indexWeek < this.weeks[this.weeks.length - 1].week) {
       ++this.indexWeek;
       this.week = this.calendarService.getWeek(this.indexWeek).days;
-      this.currentMonthName = this.calendarService.getWeek(
-        this.indexWeek
-      ).monthName;
+      this.getWeekInfo(this.indexWeek);
       this.bookingService.setupWeek(this.week);
     }
+  }
+
+  public getWeekInfo(indexWeek: number) {
+    this.weekInfo = {
+      weekStartDate: moment(moment().year())
+        .add(indexWeek - 1, 'weeks')
+        .startOf('week')
+        .format('DD - MMMM'),
+      weekEndDate: moment(moment().year())
+        .add(indexWeek - 1, 'weeks')
+        .endOf('week')
+        .format('DD - MMMM'),
+      currentMonthName: moment().format('MMMM'),
+    };
   }
 }

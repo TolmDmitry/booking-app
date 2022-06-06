@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import * as moment from 'moment';
 import { Room } from 'src/app/calendar.service';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-day-list',

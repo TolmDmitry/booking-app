@@ -1,4 +1,4 @@
-.day {
+/* .day {
   text-align: center;
   border-right: 1px solid grey;
   border-bottom: 2px solid grey;
@@ -6,13 +6,23 @@
   min-height: 45px;
   text-align: center;
   justify-content: center;
+} */
+
+.row {
+  width: 100%;
 }
 
 .currentDay {
-  background: #ff3b30;
-  color: white;
-  height: 24px;
-  width: 24px;
-  border-radius: 50%;
-  margin: 0 auto;
+  color: rgb(118, 155, 62);
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.header-calendar {
+  padding-left: 162px;
+}
+
+mat-card {
+  background-color: transparent;
+  color: black;
 }

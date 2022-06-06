@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MatCommonModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-week-selector',
@@ -10,7 +11,11 @@ export class WeekSelectorComponent {
   indexWeek: number = 0;
 
   @Input()
-  currentMonthName: string | undefined = '';
+  weekInfo = {
+    weekStartDate: '',
+    weekEndDate: '',
+    currentMonthName: '',
+  };
 
   @Output()
   prevMonth = new EventEmitter<void>();

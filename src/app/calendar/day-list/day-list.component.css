@@ -1,18 +1,8 @@
-.day {
-  text-align: center;
-  border-right: 1px solid grey;
-  border-bottom: 2px solid grey;
-  background: white;
-  min-height: 45px;
-  text-align: center;
-  justify-content: center;
-}
-.room {
-  margin-top: 10px;
-  border-right: none;
+.row {
+  width: 100%;
 }
 .free {
-  background-color: #ffffff;
+  background-color: transparent;
 }
 
 .busy {
@@ -24,14 +14,25 @@
 }
 
 .user-counter {
-  border: 1px solid gray;
-  justify-content: center;
+  border-top: 1px solid grey;
   position: absolute;
   width: 100%;
   bottom: 0;
-  background-color: #599242;
+  margin-left: -16px;
 }
 
 .delete-button {
   justify-content: center;
+}
+mat-card {
+  background-color: transparent;
+  color: black;
+}
+
+::ng-deep.mat-tab-label,
+::ng-deep.mat-tab-label-active {
+  color: gray;
+  min-width: 145px !important;
+  max-width: 100%;
+  margin: 3px !important;
 }

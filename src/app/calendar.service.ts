@@ -23,7 +23,6 @@ export class CalendarService {
 
   public getWeekDays() {
     const endDate = moment.utc().endOf('month');
-
     return Array(endDate.date())
       .fill(0)
       .map((_, i) => moment.utc().date(i + 1))
@@ -33,7 +32,7 @@ export class CalendarService {
       )
       .map(({ day, week }) => ({
         monthName: moment.utc().format('MMMM YYYY'),
-        week,
+        week: week,
         days: Array(7)
           .fill(0)
           .map((_, i) =>

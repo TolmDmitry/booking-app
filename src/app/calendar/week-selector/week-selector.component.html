@@ -2,8 +2,8 @@
   <div class="button-change-month" (click)="prevMonth.emit()">
     <mat-icon>keyboard_arrow_left</mat-icon>
   </div>
-  <div class="current-month">Week : {{ indexWeek }}</div>
-  <div class="current-month">{{ currentMonthName }}</div>
+  <div class="current-month">{{ weekInfo.weekStartDate }}</div>
+  <div class="current-month">{{ weekInfo.weekEndDate }}</div>
   <div class="button-change-month" (click)="nextMonth.emit()">
     <mat-icon>keyboard_arrow_right</mat-icon>
   </div>

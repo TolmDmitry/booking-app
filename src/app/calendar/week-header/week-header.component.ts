@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 
 @Component({
@@ -7,6 +8,7 @@ import * as moment from 'moment';
   styleUrls: ['./week-header.component.css'],
 })
 export class WeekHeaderComponent {
+  constructor(public route: ActivatedRoute) {}
   @Input()
   week: Array<moment.Moment> | undefined = [];
 
