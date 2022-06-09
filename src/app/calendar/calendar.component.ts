@@ -11,7 +11,7 @@ import * as moment from 'moment';
   styleUrls: ['./calendar.component.css'],
 })
 export class CalendarComponent implements OnInit {
-  indexWeek: number = moment().week();
+  indexWeek: number = moment().isoWeek();
   weekInfo = {
     weekStartDate: '',
     weekEndDate: '',
@@ -82,9 +82,8 @@ export class CalendarComponent implements OnInit {
     this.rooms = this.bookingService.rooms;
   }
 
-  public prevMonth() {
-    console.log(this.indexWeek);
-    if (this.indexWeek > moment().week()) {
+  public prevWeek() {
+    if (this.indexWeek > moment().isoWeek()) {
       --this.indexWeek;
       this.week = this.calendarService.getWeek(this.indexWeek).days;
       this.getWeekInfo(this.indexWeek);
@@ -92,7 +91,7 @@ export class CalendarComponent implements OnInit {
     }
   }
 
-  public nextMonth() {
+  public nextWeek() {
     if (this.indexWeek < this.weeks[this.weeks.length - 1].week) {
       ++this.indexWeek;
       this.week = this.calendarService.getWeek(this.indexWeek).days;
@@ -103,14 +102,16 @@ export class CalendarComponent implements OnInit {
 
   public getWeekInfo(indexWeek: number) {
     this.weekInfo = {
-      weekStartDate: moment(moment().year())
-        .add(indexWeek - 1, 'weeks')
-        .startOf('week')
-        .format('DD - MMMM'),
-      weekEndDate: moment(moment().year())
-        .add(indexWeek - 1, 'weeks')
-        .endOf('week')
-        .format('DD - MMMM'),
+      weekStartDate: moment()
+        .startOf('year')
+        .add(indexWeek, 'weeks')
+        .startOf('isoWeek')
+        .format('MMMM DD, YYYY'),
+      weekEndDate: moment()
+        .startOf('year')
+        .add(indexWeek, 'weeks')
+        .endOf('isoWeek')
+        .format('MMMM DD, YYYY'),
       currentMonthName: moment().format('MMMM'),
     };
   }

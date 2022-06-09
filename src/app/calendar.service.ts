@@ -26,7 +26,7 @@ export class CalendarService {
     return Array(endDate.date())
       .fill(0)
       .map((_, i) => moment.utc().date(i + 1))
-      .map((day) => ({ day, week: day.week() }))
+      .map((day) => ({ day, week: day.isoWeek() }))
       .filter(
         ({ week }, i, arr) => arr.findIndex((info) => info.week === week) === i
       )
@@ -36,7 +36,7 @@ export class CalendarService {
         days: Array(7)
           .fill(0)
           .map((_, i) =>
-            moment.utc(day).week(week).startOf('week').add(i, 'day')
+            moment.utc(day).isoWeek(week).startOf('isoWeek').add(i, 'day')
           ),
       }));
   }

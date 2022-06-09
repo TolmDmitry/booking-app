@@ -10,11 +10,15 @@ import { BookingService } from '../booking.service';
   styleUrls: ['./modal.component.css'],
 })
 export class ModalComponent implements OnInit {
+  forColleague = false;
+
   form: FormGroup = new FormGroup({
     date: new FormControl(
       new Date(moment(this.data.currentDay.date).valueOf())
     ),
     name: new FormControl(''),
+    colleague: new FormControl(false),
+    acceptOfficeRules: new FormControl(false),
   });
 
   currentDate: moment.Moment = moment();
@@ -35,8 +39,12 @@ export class ModalComponent implements OnInit {
     }
   ) {}
 
+  public bookForColleague() {
+    this.forColleague = this.forColleague ? false : true;
+  }
+
   public onSubmit() {
-    console.log(this.form.value.date);
+    console.log(this.form.value);
     this.bookingService.addBooking({
       room: this.data.currentRoom.roomNumber,
       user: this.form.value.name,

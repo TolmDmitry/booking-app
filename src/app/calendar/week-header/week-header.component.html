@@ -8,10 +8,10 @@
   >
     <div [class.currentDay]="day | isCurrentDayPipe">
       <div>
-        {{ day | datePipe: "D" }}
+        {{ day | datePipe: "dddd," }}
       </div>
       <div>
-        {{ day | datePipe: "dddd" }}
+        {{ day | datePipe: "MMMM D, YYYY" }}
       </div>
     </div>
   </mat-card>
