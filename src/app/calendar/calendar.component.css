@@ -8,6 +8,13 @@
   justify-content: center;
 }
 
+.container {
+  padding-top: 100px;
+}
 
-
-
+@media (max-width: 414) {
+  .container {
+    padding: auto;
+    width: 400px;
+  }
+}

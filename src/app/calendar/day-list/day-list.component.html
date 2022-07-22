@@ -1,12 +1,6 @@
 <mat-tab-group headerPosition="below" color="primary" dynamicHeight>
   <mat-tab *ngFor="let room of rooms" label="Room {{ room.roomNumber }}">
     <div class="row room" *ngFor="let place of room.places">
-      <mat-card class="col-sm day">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat atque
-        enim laborum nihil. Unde, perspiciatis debitis iusto rem, accusamus quae
-        recusandae deleniti necessitatibus excepturi commodi quos. Ab ipsam
-        magnam assumenda?
-      </mat-card>
       <mat-card
         matRipple
         class="my-ripple-container"

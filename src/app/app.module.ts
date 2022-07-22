@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
 import { WeekSelectorComponent } from './calendar/week-selector/week-selector.component';
 import { WeekHeaderComponent } from './calendar/week-header/week-header.component';
 import { DayListComponent } from './calendar/day-list/day-list.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { DayListComponent } from './calendar/day-list/day-list.component';
     WeekSelectorComponent,
     WeekHeaderComponent,
     DayListComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

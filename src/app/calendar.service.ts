@@ -22,10 +22,9 @@ export class CalendarService {
   }
 
   public getWeekDays() {
-    const endDate = moment.utc().endOf('month');
-    return Array(endDate.date())
+    return Array(28)
       .fill(0)
-      .map((_, i) => moment.utc().date(i + 1))
+      .map((_, i) => moment.utc().add(i, 'day'))
       .map((day) => ({ day, week: day.isoWeek() }))
       .filter(
         ({ week }, i, arr) => arr.findIndex((info) => info.week === week) === i

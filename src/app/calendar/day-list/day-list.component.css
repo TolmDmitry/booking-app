@@ -16,7 +16,6 @@
 .user-counter {
   border-top: 1px solid grey;
   position: absolute;
-  width: 100%;
   bottom: 0;
   margin-left: -16px;
 }
@@ -27,6 +26,7 @@
 mat-card {
   background-color: transparent;
   color: black;
+  height: 300px;
 }
 
 ::ng-deep.mat-tab-label,
