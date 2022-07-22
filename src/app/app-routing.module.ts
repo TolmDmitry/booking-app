@@ -1,10 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CalendarComponent } from './calendar/calendar.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', redirectTo: '/main', pathMatch: 'full' },
+  {
+    path: 'main',
+    component: CalendarComponent,
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

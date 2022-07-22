@@ -76,6 +76,7 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit(): void {
     this.weeks = this.calendarService.getWeekDays();
+    console.log(this.weeks);
     this.week = this.calendarService.getWeek(this.indexWeek).days;
     this.bookingService.setupWeek(this.week);
     this.getWeekInfo(this.indexWeek);

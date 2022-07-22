@@ -39,10 +39,6 @@ export class ModalComponent implements OnInit {
     }
   ) {}
 
-  public bookForColleague() {
-    this.forColleague = this.forColleague ? false : true;
-  }
-
   public onSubmit() {
     console.log(this.form.value);
     this.bookingService.addBooking({
